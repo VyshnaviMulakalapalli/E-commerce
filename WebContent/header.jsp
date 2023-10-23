@@ -18,7 +18,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="background-color: #E6F9E6;">
+<body style="background-color: #FFF;">
 	<!--Company Header Starting  -->
 	<div class="container-fluid text-center"
 		style="margin-top: 45px; background-color: #0c3798; color: white; padding: 5px;">
