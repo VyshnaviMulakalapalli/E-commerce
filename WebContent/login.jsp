@@ -24,9 +24,9 @@
 			style="margin-top: 5px; margin-left: 2px; margin-right: 2px;">
 			<form action="./LoginSrv" method="post"
 				class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2"
-				style="border: 2px solid black; border-radius: 10px; background-color: #FFE5CC; padding: 10px;">
+				style="border: 2px solid black; border-radius: 10px; background-color: #FFF; padding: 10px;">
 				<div style="font-weight: bold;" class="text-center">
-					<h2 style="color: green;">Login Form</h2>
+					<h3 style="color: #0c3798;">Login Form</h3>
 					<%
 					if (message != null) {
 					%>
