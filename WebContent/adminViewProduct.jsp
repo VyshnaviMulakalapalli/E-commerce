@@ -63,7 +63,8 @@
 	<div class="text-center"
 		style="color: black; font-size: 14px; font-weight: bold;"><%=message%></div>
 	<!-- Start of Product Items List -->
-	<div class="container" style="background-color: #E6F9E6;">
+	<div id="gridViewContainer" class="view-container">
+	<div class="container" style="background-color: #FFF;">
 		<div class="row text-center">
 
 			<%
@@ -101,7 +102,33 @@
 
 		</div>
 	</div>
+</div>
 	<!-- ENd of Product Items List -->
+	
+	<div style="position: fixed; bottom: 20px; right: 20px;">
+    <!-- <label for="viewDropdown" style="font-size: 10px;">Select View:</label>!> -->
+    <select id="viewDropdown" style="width: 50px; font-size: 12px;">
+        <option value="grid">Grid View</option>
+        <option value="list">List View</option>
+    </select>
+</div>
+<script>
+    var viewDropdown = document.getElementById("viewDropdown");
+    var gridViewContainer = document.getElementById("gridViewContainer");
+    var listViewContainer = document.getElementById("listViewContainer");
+
+    viewDropdown.addEventListener("change", function() {
+        var selectedView = viewDropdown.value;
+
+        if (selectedView === "grid") {
+            gridViewContainer.style.display = "block";
+            listViewContainer.style.display = "none";
+        } else if (selectedView === "list") {
+            gridViewContainer.style.display = "none";
+            listViewContainer.style.display = "block";
+        }
+    });
+</script>
 
 	<%@ include file="footer.html"%>
 

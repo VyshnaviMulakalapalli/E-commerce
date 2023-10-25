@@ -37,8 +37,9 @@
 	%>
 
 	<jsp:include page="header.jsp" />
+	
 
-	<div class="products" style="background-color: #E6F9E6;">
+	<div class="products" style="background-color: #FFF;">
 
 		<div class="tab" align="center">
 			<form>
@@ -61,6 +62,7 @@
 			</form>
 		</div>
 	</div>
+	
 
 	<%@ include file="footer.html"%>
 </body>
