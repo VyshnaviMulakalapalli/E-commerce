@@ -117,6 +117,108 @@
 		</div>
 	</div>
 </div>
+
+	<div id="listViewContainer" class="view-container">
+		<div class="container-fluid">
+			<div class="table-responsive ">
+			
+				<table class="table table-hover">
+					<thead
+						style="background-color: #2c6c4b; color: white; font-size: 18px;">
+						<tr>
+							<th>Image</th>
+							<th>Name</th>
+							<!-- <th>Description</th> -->
+							<th>Type</th>
+							<th>Price</th>
+							<th colspan="2" style="text-align: center">Actions</th>
+						</tr>
+					</thead>
+					<tbody style="background-color: white; font-size: 16px;">
+	
+						<%
+						ProductServiceImpl productDao = new ProductServiceImpl();
+						
+						products = productDao.getAllProducts();
+						for (ProductBean product : products) {
+							int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
+						
+						%>
+						
+						<tr>
+							<td><img src="./ShowImage?pid=<%=product.getProdId()%>"
+								style="width: 50px; height: 50px;"></td>
+							
+							<%
+							String name = product.getProdName();
+							name = name.substring(0, Math.min(name.length(), 100));
+							%>
+							<td><%=name%></td>
+							<%
+						String description = product.getProdInfo();
+						description = description.substring(0, Math.min(description.length(), 25)) + "..";
+						%>
+						<!-- <td><%=description%></td> -->
+							<td><%=product.getProdType().toUpperCase()%></td>
+							<td><%=product.getProdPrice()%></td>
+							
+							
+							
+							<%
+							if (cartQty == 0) {
+							%>
+							<td>
+							<form method="post">
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								class="btn btn-success" style="margin-left: 60px;">Add to Cart</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								class="btn btn-primary" style="margin-left: 60px;">Buy Now</button>
+							</form>
+							</td>
+							<%
+							} else {
+							%>
+							<td>
+							<form method="post">
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
+								class="btn btn-danger">Remove From Cart</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit" formaction="cartDetails.jsp"
+								class="btn btn-success">Checkout</button>
+							</form>
+							
+							</td>
+							<%
+							}
+							%>
+	
+						</tr>
+						<%
+						}
+						%>
+	
+						
+						<%
+						if (products.size() == 0) {
+						%>
+						<tr style="background-color: grey; color: white;">
+							<td colspan="7" style="text-align: center;">No Items
+								Available</td>
+	
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<!-- ENd of Product Items List -->
 <div style="position: fixed; bottom: 20px; right: 20px;">
     <!-- <label for="viewDropdown" style="font-size: 10px;">Select View:</label>!> -->
@@ -129,6 +231,15 @@
     var viewDropdown = document.getElementById("viewDropdown");
     var gridViewContainer = document.getElementById("gridViewContainer");
     var listViewContainer = document.getElementById("listViewContainer");
+
+    
+    if (viewDropdown.value === "grid") {
+        gridViewContainer.style.display = "block";
+        listViewContainer.style.display = "none";
+    } else if (viewDropdown.value === "list") {
+        gridViewContainer.style.display = "none";
+        listViewContainer.style.display = "block";
+    }
 
     viewDropdown.addEventListener("change", function() {
         var selectedView = viewDropdown.value;
