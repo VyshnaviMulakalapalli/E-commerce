@@ -21,7 +21,7 @@
 <body style="background-color: #FFF;">
 	<!--Company Header Starting  -->
 	<div class="container-fluid text-center"
-		style="margin-top: 45px; background-color: #0c3798; color: white; padding: 5px;">
+		style="margin-top: 45px; background-color: #2c6c4b; color: white; padding: 5px;">
 		<h2>UNH Electronics</h2>
 		<h6>Specialize in Electronics</h6>
 		<form class="form-inline" action="index.jsp" method="get">
