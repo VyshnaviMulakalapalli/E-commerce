@@ -176,7 +176,7 @@
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit"
 								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
-								class="btn btn-primary" style="margin-left: 60px;">Buy Now</button>
+								class="btn btn-primary" style="margin-left: 110px;">Buy Now</button>
 							</form>
 							</td>
 							<%
@@ -186,10 +186,10 @@
 							<form method="post">
 							<button type="submit"
 								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
-								class="btn btn-danger">Remove From Cart</button>
+								class="btn btn-danger" style="margin-left: 60px;">Remove From Cart</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit" formaction="cartDetails.jsp"
-								class="btn btn-success">Checkout</button>
+								class="btn btn-success" style="margin-left: 60px;">Checkout</button>
 							</form>
 							
 							</td>
