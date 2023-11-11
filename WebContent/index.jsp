@@ -17,6 +17,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #FFF;">
+	<%
+	String currentView = (String) session.getAttribute("view");
+	if (currentView == null) {
+	    currentView = "grid"; 
+	}
+	session.setAttribute("view", currentView);
+	%>
 
 	<%
 	/* Checking the user credentials */
@@ -227,20 +234,25 @@
 	</div>
 	
 	<script>
+	document.addEventListener("DOMContentLoaded", function() {
 	    var viewDropdown = document.getElementById("viewDropdown");
 	    var gridViewContainer = document.getElementById("gridViewContainer");
 	    var listViewContainer = document.getElementById("listViewContainer");
+	    
+	    var currentView = "<%= session.getAttribute("view") %>";
+	    viewDropdown.value = currentView;
 	
-	    if (viewDropdown.value === "grid") {
+	    if (currentView === "grid") {
 	        gridViewContainer.style.display = "block";
 	        listViewContainer.style.display = "none";
-	    } else if (viewDropdown.value === "list") {
+	    } else if (currentView === "list") {
 	        gridViewContainer.style.display = "none";
 	        listViewContainer.style.display = "block";
 	    }
 	
 	    viewDropdown.addEventListener("change", function() {
 	        var selectedView = viewDropdown.value;
+	        fetch('updateView.jsp?view=' + selectedView)
 	
 	        if (selectedView === "grid") {
 	            gridViewContainer.style.display = "block";
@@ -250,6 +262,7 @@
 	            listViewContainer.style.display = "block";
 	        }
 	    });
+	});
 	</script>
 
 	<%@ include file="footer.html"%>
