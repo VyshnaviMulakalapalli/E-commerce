@@ -95,17 +95,17 @@
 							if (cartQty == 0) {
 							%>
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1&view=<%=currentView%>"
 								class="btn btn-success">Add to Cart</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1&view=<%=currentView%>"
 								class="btn btn-primary">Buy Now</button>
 							<%
 							} else {
 							%>
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0&view=<%=currentView%>"
 								class="btn btn-danger">Remove From Cart</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit" formaction="cartDetails.jsp"
@@ -175,11 +175,11 @@
 							<td>
 							<form method="post">
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1&view=<%=currentView%>"
 								class="btn btn-success" style="margin-left: 60px;">Add to Cart</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1&view=<%=currentView%>"
 								class="btn btn-primary" style="margin-left: 110px;">Buy Now</button>
 							</form>
 							</td>
@@ -189,7 +189,7 @@
 							<td>
 							<form method="post">
 							<button type="submit"
-								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0&view=<%=currentView%>"
 								class="btn btn-danger" style="margin-left: 60px;">Remove From Cart</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit" formaction="cartDetails.jsp"

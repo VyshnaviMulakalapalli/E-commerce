@@ -19,6 +19,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="background-color: #FFF;">
+
+	<%
+	String currentView = (String) session.getAttribute("view");
+	if (currentView == null) {
+	    currentView = "grid"; 
+	}
+	session.setAttribute("view", currentView);
+	%>
 	<!--Company Header Starting  -->
 	<div class="container-fluid text-center"
 		style="margin-top: 45px; background-color: #2c6c4b; color: white; padding: 5px;">
@@ -29,6 +37,7 @@
 				<input type="text" class="form-control" size="50" name="search"
 					placeholder="Search Items" required>
 				<div class="input-group-btn">
+					<input type="hidden" name="view" value="<%=currentView%>">
 					<input type="submit" class="btn btn-danger" value="Search" />
 				</div>
 			</div>

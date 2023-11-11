@@ -92,11 +92,11 @@
 						</p>
 						<form method="post">
 							<button type="submit"
-								formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>"
+								formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>&view=<%=currentView%>"
 								class="btn btn-danger">Remove Product</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit"
-								formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>"
+								formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>&view=<%=currentView%>"
 								class="btn btn-primary">Update Product</button>
 						</form>
 					</div>
@@ -152,11 +152,11 @@
 							<td>
 							<form method="post">
 								<button type="submit"
-									formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>"
+									formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>&view=<%=currentView%>"
 									class="btn btn-danger" style="margin-left: 80px;">Remove Product</button>
 								&nbsp;&nbsp;&nbsp;
 								<button type="submit"
-									formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>"
+									formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>&view=<%=currentView%>"
 									class="btn btn-primary" style="margin-left: 80px;">Update Product</button>
 							</form>
 							
