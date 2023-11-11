@@ -41,9 +41,9 @@
 			style="margin-top: 5px; margin-left: 2px; margin-right: 2px;">
 			<form action="updateProduct.jsp" method="post"
 				class="col-md-4 col-md-offset-4"
-				style="border: 2px solid black; border-radius: 10px; background-color: #FFE5CC; padding: 10px;">
+				style="border: 2px solid black; border-radius: 10px; background-color: #FFF; padding: 10px;">
 				<div style="font-weight: bold;" class="text-center">
-					<h3 style="color: green;">Product Update Form</h3>
+					<h3 style="color: #0c3798;">Product Update Form</h3>
 					<%
 					if (message != null) {
 					%>

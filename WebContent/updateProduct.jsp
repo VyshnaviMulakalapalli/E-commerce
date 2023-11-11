@@ -46,12 +46,12 @@
 			style="margin-top: 5px; margin-left: 2px; margin-right: 2px;">
 			<form action="./UpdateProductSrv" method="post"
 				class="col-md-6 col-md-offset-3"
-				style="border: 2px solid black; border-radius: 10px; background-color: #FFE5CC; padding: 10px;">
+				style="border: 2px solid black; border-radius: 10px; background-color: #FFF; padding: 10px;">
 				<div style="font-weight: bold;" class="text-center">
 					<div class="form-group">
 						<img src="./ShowImage?pid=<%=product.getProdId()%>"
 							alt="Product Image" height="100px" />
-						<h2 style="color: green;">Product Update Form</h2>
+						<h3 style="color: #0c3798;">Product Update Form</h3>
 					</div>
 
 					<%
