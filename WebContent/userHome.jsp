@@ -58,65 +58,65 @@
 	<!-- <script>document.getElementById('mycart').innerHTML='<i data-count="20" class="fa fa-shopping-cart fa-3x icon-white badge" style="background-color:#333;margin:0px;padding:0px; margin-top:5px;"></i>'</script>
  -->
 	<!-- Start of Product Items List -->
-<div id="gridViewContainer" class="view-container">
-	<div class="container">
-		<div class="row text-center">
-
-			<%
-			for (ProductBean product : products) {
-				int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
-			%>
-			<div class="col-sm-4" style='height: 350px;'>
-				<div class="thumbnail">
-					<img src="./ShowImage?pid=<%=product.getProdId()%>" alt="Product"
-						style="height: 150px; max-width: 180px">
-					<p class="productname"><%=product.getProdName()%>
-					</p>
-					<%
-					String description = product.getProdInfo();
-					description = description.substring(0, Math.min(description.length(), 100));
-					%>
-					<p class="productinfo"><%=description%>..
-					</p>
-					<p class="price">
-						$
-						<%=product.getProdPrice()%>
-					</p>
-					<form method="post">
+	<div id="gridViewContainer" class="view-container">
+		<div class="container">
+			<div class="row text-center">
+	
+				<%
+				for (ProductBean product : products) {
+					int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
+				%>
+				<div class="col-sm-4" style='height: 350px;'>
+					<div class="thumbnail">
+						<img src="./ShowImage?pid=<%=product.getProdId()%>" alt="Product"
+							style="height: 150px; max-width: 180px">
+						<p class="productname"><%=product.getProdName()%>
+						</p>
 						<%
-						if (cartQty == 0) {
+						String description = product.getProdInfo();
+						description = description.substring(0, Math.min(description.length(), 100));
 						%>
-						<button type="submit"
-							formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
-							class="btn btn-success">Add to Cart</button>
-						&nbsp;&nbsp;&nbsp;
-						<button type="submit"
-							formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
-							class="btn btn-primary">Buy Now</button>
-						<%
-						} else {
-						%>
-						<button type="submit"
-							formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
-							class="btn btn-danger">Remove From Cart</button>
-						&nbsp;&nbsp;&nbsp;
-						<button type="submit" formaction="cartDetails.jsp"
-							class="btn btn-success">Checkout</button>
-						<%
-						}
-						%>
-					</form>
-					<br />
+						<p class="productinfo"><%=description%>..
+						</p>
+						<p class="price">
+							$
+							<%=product.getProdPrice()%>
+						</p>
+						<form method="post">
+							<%
+							if (cartQty == 0) {
+							%>
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								class="btn btn-success">Add to Cart</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=1"
+								class="btn btn-primary">Buy Now</button>
+							<%
+							} else {
+							%>
+							<button type="submit"
+								formaction="./AddtoCart?uid=<%=userName%>&pid=<%=product.getProdId()%>&pqty=0"
+								class="btn btn-danger">Remove From Cart</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit" formaction="cartDetails.jsp"
+								class="btn btn-success">Checkout</button>
+							<%
+							}
+							%>
+						</form>
+						<br />
+					</div>
 				</div>
+	
+				<%
+				}
+				%>
+	
 			</div>
-
-			<%
-			}
-			%>
-
 		</div>
 	</div>
-</div>
 
 	<div id="listViewContainer" class="view-container">
 		<div class="container-fluid">
@@ -137,9 +137,6 @@
 					<tbody style="background-color: white; font-size: 16px;">
 	
 						<%
-						ProductServiceImpl productDao = new ProductServiceImpl();
-						
-						products = productDao.getAllProducts();
 						for (ProductBean product : products) {
 							int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
 						
@@ -220,40 +217,39 @@
 	</div>
 
 	<!-- ENd of Product Items List -->
-<div style="position: fixed; bottom: 20px; right: 20px;">
-    <!-- <label for="viewDropdown" style="font-size: 10px;">Select View:</label>!> -->
-    <select id="viewDropdown" style="width: 50px; font-size: 12px;">
-        <option value="grid">Grid View</option>
-        <option value="list">List View</option>
-    </select>
-</div>
-<script>
-    var viewDropdown = document.getElementById("viewDropdown");
-    var gridViewContainer = document.getElementById("gridViewContainer");
-    var listViewContainer = document.getElementById("listViewContainer");
-
-    
-    if (viewDropdown.value === "grid") {
-        gridViewContainer.style.display = "block";
-        listViewContainer.style.display = "none";
-    } else if (viewDropdown.value === "list") {
-        gridViewContainer.style.display = "none";
-        listViewContainer.style.display = "block";
-    }
-
-    viewDropdown.addEventListener("change", function() {
-        var selectedView = viewDropdown.value;
-
-        if (selectedView === "grid") {
-            gridViewContainer.style.display = "block";
-            listViewContainer.style.display = "none";
-        } else if (selectedView === "list") {
-            gridViewContainer.style.display = "none";
-            listViewContainer.style.display = "block";
-        }
-    });
-</script>
-
+	<div style="position: fixed; bottom: 20px; right: 20px;">
+	    <!-- <label for="viewDropdown" style="font-size: 10px;">Select View:</label>!> -->
+	    <select id="viewDropdown" style="width: 50px; font-size: 12px;">
+	        <option value="grid">Grid View</option>
+	        <option value="list">List View</option>
+	    </select>
+	</div>
+	<script>
+	    var viewDropdown = document.getElementById("viewDropdown");
+	    var gridViewContainer = document.getElementById("gridViewContainer");
+	    var listViewContainer = document.getElementById("listViewContainer");
+	
+	    
+	    if (viewDropdown.value === "grid") {
+	        gridViewContainer.style.display = "block";
+	        listViewContainer.style.display = "none";
+	    } else if (viewDropdown.value === "list") {
+	        gridViewContainer.style.display = "none";
+	        listViewContainer.style.display = "block";
+	    }
+	
+	    viewDropdown.addEventListener("change", function() {
+	        var selectedView = viewDropdown.value;
+	
+	        if (selectedView === "grid") {
+	            gridViewContainer.style.display = "block";
+	            listViewContainer.style.display = "none";
+	        } else if (selectedView === "list") {
+	            gridViewContainer.style.display = "none";
+	            listViewContainer.style.display = "block";
+	        }
+	    });
+	</script>
 
 	<%@ include file="footer.html"%>
 

@@ -138,9 +138,6 @@
 					<tbody style="background-color: white; font-size: 16px;">
 	
 						<%
-						ProductServiceImpl productDao = new ProductServiceImpl();
-						
-						products = productDao.getAllProducts();
 						for (ProductBean product : products) {
 							int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
 						
@@ -219,10 +216,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
 	<!-- ENd of Product Items List -->
+	
 	<div style="position: fixed; bottom: 20px; right: 20px;">
 	    <!-- <label for="viewDropdown" style="font-size: 10px;">Select View:</label>!> -->
 	    <select id="viewDropdown" style="width: 50px; font-size: 12px;">
@@ -231,7 +226,6 @@
 	    </select>
 	</div>
 	
-
 	<script>
 	    var viewDropdown = document.getElementById("viewDropdown");
 	    var gridViewContainer = document.getElementById("gridViewContainer");
@@ -257,7 +251,6 @@
 	        }
 	    });
 	</script>
-
 
 	<%@ include file="footer.html"%>
 

@@ -64,50 +64,49 @@
 		style="color: black; font-size: 14px; font-weight: bold;"><%=message%></div>
 	<!-- Start of Product Items List -->
 	<div id="gridViewContainer" class="view-container">
-	<div class="container" style="background-color: #FFF;">
-		<div class="row text-center">
-
-			<%
-			for (ProductBean product : products) {
-			%>
-			<div class="col-sm-4" style='height: 350px;'>
-				<div class="thumbnail">
-					<img src="./ShowImage?pid=<%=product.getProdId()%>" alt="Product"
-						style="height: 150px; max-width: 180px;">
-					<p class="productname"><%=product.getProdName()%>
-						(
-						<%=product.getProdId()%>
-						)
-					</p>
-					<p class="productinfo"><%=product.getProdInfo()%></p>
-					<p class="price">
-						$
-						<%=product.getProdPrice()%>
-					</p>
-					<form method="post">
-						<button type="submit"
-							formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>"
-							class="btn btn-danger">Remove Product</button>
-						&nbsp;&nbsp;&nbsp;
-						<button type="submit"
-							formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>"
-							class="btn btn-primary">Update Product</button>
-					</form>
+		<div class="container" style="background-color: #FFF;">
+			<div class="row text-center">
+	
+				<%
+				for (ProductBean product : products) {
+				%>
+				<div class="col-sm-4" style='height: 350px;'>
+					<div class="thumbnail">
+						<img src="./ShowImage?pid=<%=product.getProdId()%>" alt="Product"
+							style="height: 150px; max-width: 180px;">
+						<p class="productname"><%=product.getProdName()%>
+							(
+							<%=product.getProdId()%>
+							)
+						</p>
+						<p class="productinfo"><%=product.getProdInfo()%></p>
+						<p class="price">
+							$
+							<%=product.getProdPrice()%>
+						</p>
+						<form method="post">
+							<button type="submit"
+								formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>"
+								class="btn btn-danger">Remove Product</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit"
+								formaction="updateProduct.jsp?prodid=<%=product.getProdId()%>"
+								class="btn btn-primary">Update Product</button>
+						</form>
+					</div>
 				</div>
+	
+				<%
+				}
+				%>
+	
 			</div>
-
-			<%
-			}
-			%>
-
 		</div>
 	</div>
-</div>
 
 	<div id="listViewContainer" class="view-container">
 		<div class="container-fluid">
 			<div class="table-responsive ">
-			
 				<table class="table table-hover">
 					<thead
 						style="background-color: #2c6c4b; color: white; font-size: 18px;">
@@ -123,9 +122,6 @@
 					<tbody style="background-color: white; font-size: 16px;">
 	
 						<%
-						ProductServiceImpl productDao = new ProductServiceImpl();
-						
-						products = productDao.getAllProducts();
 						for (ProductBean product : products) {
 							int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
 						
@@ -165,7 +161,6 @@
 						<%
 						}
 						%>
-	
 						
 						<%
 						if (products.size() == 0) {
