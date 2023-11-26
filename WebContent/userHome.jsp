@@ -56,8 +56,6 @@
 	}
 	%>
 
-
-
 	<jsp:include page="header.jsp" />
 
 	<div class="text-center"
@@ -72,6 +70,7 @@
 				<%
 				for (ProductBean product : products) {
 					int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
+					boolean inWishlist = new WishlistServiceImpl().isProductInWishlist(userName, product.getProdId());
 				%>
 				<div class="col-sm-4" style='height: 350px;'>
 					<div class="thumbnail">
@@ -112,6 +111,22 @@
 							<%
 							}
 							%>
+							<%
+							if (inWishlist == false) {
+							%>
+							<button type="submit"
+								formaction="./AddtoWishlist?uid=<%=userName%>&pid=<%=product.getProdId()%>&view=<%=currentView%>"
+								class="btn btn-warning">Add to Wishlist</button>
+							&nbsp;&nbsp;&nbsp;
+							<%
+							} else {
+							%>
+							<button type="submit"
+								formaction="./AddtoWishlist?uid=<%=userName%>&pid=<%=product.getProdId()%>&view=<%=currentView%>"
+								class="btn btn-danger">Remove from Wishlist</button>
+							<%
+							}
+							%>
 						</form>
 						<br />
 					</div>
@@ -146,6 +161,7 @@
 						<%
 						for (ProductBean product : products) {
 							int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
+							boolean inWishlist = new WishlistServiceImpl().isProductInWishlist(userName, product.getProdId());
 						
 						%>
 						
@@ -165,8 +181,6 @@
 						<!-- <td><%=description%></td> -->
 							<td><%=product.getProdType().toUpperCase()%></td>
 							<td><%=product.getProdPrice()%></td>
-							
-							
 							
 							<%
 							if (cartQty == 0) {
@@ -195,6 +209,30 @@
 								class="btn btn-success" style="margin-left: 60px;">Checkout</button>
 							</form>
 							
+							</td>
+							<%
+							}
+							%>
+							
+							<%
+							if (inWishlist == false) {
+							%>
+							<td>
+							<form method="post">
+							<button type="submit"
+								formaction="./AddtoWishlist?uid=<%=userName%>&pid=<%=product.getProdId()%>&view=<%=currentView%>"
+								class="btn btn-warning">Add to Wishlist</button>
+							</form>
+							</td>
+							<%
+							} else {
+							%>
+							<td>
+							<form method="post">
+							<button type="submit"
+								formaction="./AddtoWishlist?uid=<%=userName%>&pid=<%=product.getProdId()%>&view=<%=currentView%>"
+								class="btn btn-danger">Remove from Wishlist</button>
+							</form>
 							</td>
 							<%
 							}
