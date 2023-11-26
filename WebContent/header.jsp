@@ -139,6 +139,7 @@
 					}
 					%>
 					<li><a href="orderDetails.jsp">Orders</a></li>
+					<li><a href="wishlistDetails.jsp">Wishlist</a></li>
 					<li><a href="userProfile.jsp">Profile</a></li>
 					<li><a href="./LogoutSrv">Logout</a></li>
 				</ul>
