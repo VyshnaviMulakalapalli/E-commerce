@@ -32,6 +32,18 @@ public class ProductBean implements Serializable {
 		this.prodid = prodid;
 		this.prodapiImage = prodapiImage;
 	}
+	public ProductBean(String prodId, String prodName, String prodType, String prodInfo, double prodPrice,
+			int prodQuantity, InputStream prodImage ) {
+		super();
+		this.prodId = prodId;
+		this.prodName = prodName;
+		this.prodType = prodType;
+		this.prodInfo = prodInfo;
+		this.prodPrice = prodPrice;
+		this.prodQuantity = prodQuantity;
+		this.prodImage = prodImage;
+		
+	}
 
 	public String getProdId() {
 		return prodId;
