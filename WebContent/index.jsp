@@ -31,6 +31,27 @@
 	}
 	%>
 	<jsp:include page="header.jsp" />
+	<%
+    // Fetch product data from the API
+    String apiUrl = "https://fakestoreapi.com/products";
+    String jsonData = "";
+    try {
+        URL url = new URL(apiUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+
+        // Read the response
+        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line;
+        while ((line = rd.readLine()) != null) {
+            jsonData += line;
+        }
+        rd.close();
+    } catch (Exception e) {
+        out.println("Error fetching data from API: " + e.getMessage());
+    }
+	%>
 	
 	<%@ include file="footer.html"%>
 
