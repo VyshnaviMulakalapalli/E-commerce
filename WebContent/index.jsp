@@ -74,6 +74,44 @@
     }
 	%>
 	
+	<br>
+    <div class="container">
+			<div class="row text-center">
+	
+				<%
+				for (ProductBean product : products) {
+					
+					boolean inWishlist = new WishlistServiceImpl().isProductInWishlist(userName, product.getProdId());
+				%>
+				<div class="col-sm-4" style='height: 350px;'>
+					<div class="thumbnail">
+						<img src="<%= product.getProdapiImage() %>" alt="Product Image" style="height: 130px; width: 150px;">
+						<br>
+						<p class="productname" style="font-weight: bold; color: #2c6c4b; font-family: Arial;"><%=product.getProdName()%>
+						</p>
+						<%
+						String description = product.getProdInfo();
+						description = description.substring(0, Math.min(description.length(), 100));
+						%>
+						<p class="productinfo"><%=description%>..
+						</p>
+						<p class="type"> <%= product.getProdType().substring(0, 1).toUpperCase() + product.getProdType().substring(1) %></p>
+						<p class="price">
+							$
+							<%=product.getProdPrice()%>
+						</p>
+						<br />
+					</div>
+				</div>
+	
+				<%
+				}
+				%>
+	
+			</div>
+		</div>
+	
+	
 	<%@ include file="footer.html"%>
 
 
