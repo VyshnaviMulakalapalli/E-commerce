@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page
     import="java.io.*,java.net.*,java.util.*,com.shashi.service.impl.*, com.shashi.service.*,com.shashi.beans.*"%>
+<%@ page import="org.json.JSONArray, org.json.JSONObject, org.json.JSONException" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +51,26 @@
         rd.close();
     } catch (Exception e) {
         out.println("Error fetching data from API: " + e.getMessage());
+    }
+    
+ // Parse the JSON response
+    List<ProductBean> products = new ArrayList<>();
+    try {
+        JSONArray jsonArray = new JSONArray(jsonData);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonProduct = jsonArray.getJSONObject(i);
+            ProductBean product = new ProductBean();
+            product.setProdapiImage(jsonProduct.getString("image"));
+            product.setProdid(jsonProduct.getInt("id"));
+            product.setProdName(jsonProduct.getString("title"));
+            product.setProdInfo(jsonProduct.getString("description"));
+            product.setProdType(jsonProduct.getString("category"));
+            product.setProdPrice(jsonProduct.getDouble("price"));
+            // Add setters in ProductBean for other fields
+            products.add(product);
+        }
+    } catch (JSONException e) {
+        out.println("Error parsing JSON: " + e.getMessage());
     }
 	%>
 	
